@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 :root {
     /* Default theme colors */
     --color-primary: #f45c40;
@@ -169,8 +173,8 @@ body {
 }
 
 .meal-button:hover {
-    background-color: var(--color-splash);
-    border-color: var(--color-splash);
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
     color: var(--color-surface);
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.2);

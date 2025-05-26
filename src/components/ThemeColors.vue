@@ -195,8 +195,8 @@ export default {
 }
 
 .theme-colors-button:hover {
-  background-color: var(--color-splash);
-  border-color: var(--color-splash);
+  background-color: var(--color-secondary);
+  border-color: var(--color-secondary);
   color: var(--color-surface);
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.2);
@@ -210,7 +210,7 @@ export default {
   position: absolute;
   top: calc(100% + var(--spacing-sm));
   right: 0;
-  background: var(--color-surface);
+  background: var(--color-background);
   border-radius: var(--radius-md);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   z-index: 100;

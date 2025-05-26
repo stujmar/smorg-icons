@@ -1,14 +1,8 @@
 {
-  "midnight": {
-    "text": "#bef4e2",
-    "primary": "#bef9f8",
-    "primary-rgb": "190, 249, 248",
-    "surface": "#48464e"
-  },
   "lunch": {
     "secondary": "#c3d945"
   },
-  "breakfast": {
-    "secondary": "#ffc042"
+  "supper": {
+    "text": "#ff5500"
   }
 }

@@ -12,18 +12,13 @@ export default {
   },
   data() {
     return {
-      searchQuery: '',
       selectedMeal: 'breakfast',
       currentTheme: 'breakfast',
       meals: ['breakfast', 'lunch', 'supper', 'midnight snack']
     }
   },
   methods: {
-    filterIcons() {
-      // TODO: Implement icon filtering
-      console.log('Filtering icons with query:', this.searchQuery)
-    },
-    selectMeal(meal) {
+    selectMeal(meal: string) {
       this.selectedMeal = meal
       // Apply theme based on meal time
       const themeMap = {
@@ -33,7 +28,7 @@ export default {
       this.currentTheme = themeName
       themeService.applyTheme(themeName)
     },
-    onThemeChanged(newTheme) {
+    onThemeChanged(newTheme: string) {
       this.currentTheme = newTheme
       // Find corresponding meal for the theme
       const mealMap = {
@@ -51,30 +46,19 @@ export default {
 
 <template>
   <div class="app">
-    <header class="header">
-      <div class="header-content">
-        <h1>Smorgasbord Icon Library</h1>
-        <div class="search-bar">
-          <input 
-            type="text" 
-            v-model="searchQuery" 
-            placeholder="Search icons..." 
-            @input="filterIcons"
-          >
-        </div>
-      </div>
-    </header>
     <nav class="meal-nav">
       <div class="nav-content">
-        <div class="meal-buttons">
-          <button 
-            v-for="meal in meals" 
-            :key="meal"
-            :class="['meal-button', { active: selectedMeal === meal }]"
-            @click="selectMeal(meal)"
-          >
-            {{ meal }}
-          </button>
+        <div class="theme-navigation">
+          <div class="meal-buttons">
+            <button 
+              v-for="meal in meals" 
+              :key="meal"
+              :class="['meal-button', { active: selectedMeal === meal }]"
+              @click="selectMeal(meal)"
+            >
+              {{ meal }}
+            </button>
+          </div>
         </div>
         <ThemeColors 
           :current-theme="currentTheme"
@@ -92,6 +76,7 @@ export default {
 
 <style>
 html, body {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
   width: 100vw;
@@ -106,77 +91,32 @@ html, body {
   align-items: stretch;
 }
 
-.header {
-  background-color: var(--color-primary);
-  color: var(--color-surface);
-  padding: var(--spacing-md) 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 100%;
-}
-
 .header-content {
   width: 100%;
-  max-width: 1400px;
   margin: 0 auto;
   padding: 12px;
-;
-}
-
-.header h1 {
-  margin: 0 0 var(--spacing-md) 0;
-  font-size: 1.5rem;
-}
-
-.search-bar {
-  width: 100%;
-}
-
-.search-bar input {
-  width: 100%;
-  padding: var(--spacing-sm) var(--spacing-md);
-  border: 2px solid transparent;
-  border-radius: var(--radius-sm);
-  font-size: 1rem;
-  background-color: rgba(var(--color-text-rgb), 0.1);
-  transition: all var(--transition-fast);
-  min-height: 44px;
-  outline: none;
-}
-
-.search-bar input::placeholder {
-  color: var(--color-surface);
-  opacity: 0.6;
-}
-
-.search-bar input:hover {
-  background-color: rgba(var(--color-text-rgb), 0.15);
-}
-
-.search-bar input:focus {
-  background-color: rgba(var(--color-text-rgb), 0.2);
-  border-color: var(--color-splash);
-  box-shadow: 
-    0 0 0 4px rgba(var(--color-splash-rgb), 0.2),
-    0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
 }
 
 .meal-nav {
   padding: var(--spacing-md) 0;
   display: flex;
+  position: fixed;
   justify-content: center;
   background-color: var(--color-surface);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   width: 100%;
+  z-index: 100;
 }
 
 .nav-content {
   width: 100%;
-  max-width: 1400px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 12px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .meal-buttons {
@@ -249,9 +189,8 @@ html, body {
 
 .content-wrapper {
   width: 100%;
-  max-width: 1400px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: var(--spacing-xl);
 }
 
 @media (prefers-contrast: more) {
@@ -262,15 +201,10 @@ html, body {
   .meal-button:focus-visible::before {
     box-shadow: 0 0 0 3px var(--color-surface), 0 0 0 6px var(--color-primary);
   }
-  
-  .search-bar input {
-    border-width: 3px;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .meal-button,
-  .search-bar input,
   .meal-button::before {
     transition: none;
   }

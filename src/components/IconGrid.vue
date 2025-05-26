@@ -1,6 +1,33 @@
 <template>
   <div class="icon-grid">
     <div class="controls">
+      <div class="search-control">
+        <div class="search-input-wrapper">
+          <svg 
+            class="search-icon" 
+            width="20" 
+            height="20" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path 
+              d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" 
+              stroke="currentColor" 
+              stroke-width="2" 
+              stroke-linecap="round" 
+              stroke-linejoin="round"
+            />
+          </svg>
+          <input 
+            type="text" 
+            v-model="searchQuery" 
+            placeholder="Search icons..." 
+            @input="filterIcons"
+            class="search-input"
+          >
+        </div>
+      </div>
       <div class="variant-toggle">
         <label class="toggle">
           <span class="toggle-label">{{ showSolid ? 'Solid' : 'Outline' }}</span>
@@ -93,7 +120,8 @@ export default {
       selectedCuisine: '',
       iconSize: 48,
       copyFeedback: null,
-      mealOrder: ['breakfast', 'lunch', 'supper', 'midnight']
+      mealOrder: ['breakfast', 'lunch', 'supper', 'midnight'],
+      searchQuery: ''
     }
   },
   computed: {
@@ -112,10 +140,10 @@ export default {
     },
     filteredIcons() {
       return Object.entries(this.icons).reduce((acc, [id, icon]) => {
-        const matchesSearch = !this.$root.searchQuery || 
-          icon.name.toLowerCase().includes(this.$root.searchQuery.toLowerCase()) ||
-          icon.meal.toLowerCase().includes(this.$root.searchQuery.toLowerCase()) ||
-          icon.cuisines.some(cuisine => cuisine.toLowerCase().includes(this.$root.searchQuery.toLowerCase()))
+        const matchesSearch = !this.searchQuery || 
+          icon.name.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+          icon.meal.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+          icon.cuisines.some(cuisine => cuisine.toLowerCase().includes(this.searchQuery.toLowerCase()))
         
         const matchesMeal = !this.selectedMeal || icon.meal === this.selectedMeal
         const matchesCuisine = !this.selectedCuisine || icon.cuisines.includes(this.selectedCuisine)
@@ -130,6 +158,10 @@ export default {
   methods: {
     formatCategory(category) {
       return category.charAt(0).toUpperCase() + category.slice(1)
+    },
+    filterIcons() {
+      // The filtering is already handled in the computed property
+      console.log('Filtering icons with query:', this.searchQuery)
     },
     async copyIconToClipboard(icon) {
       const svg = this.showSolid ? icon.solid : icon.outline
@@ -147,9 +179,9 @@ export default {
 
 <style>
 .icon-grid {
-  padding: var(--spacing-md);
+  padding-top: 140px;
   background-color: var(--color-background);
-  min-height: 100vh;
+  max-width: 1280px;
 }
 
 .controls {
@@ -160,9 +192,60 @@ export default {
   flex-wrap: wrap;
   padding: var(--spacing-md);
   background: var(--color-surface);
-  border-radius: var(--radius-lg);
-  border: 2px solid var(--color-secondary);
-  box-shadow: 0 4px 12px rgba(var(--color-secondary-rgb), 0.15);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(var(--color-secondary-rgb), 0.2);
+  /* border: 4px solid var(--color-secondary); */
+  /* box-shadow: 0 4px 16px rgba(var(--color-secondary-rgb), 0.15); */
+  position: relative;
+  z-index: 1;
+}
+
+.search-control {
+  flex: 1;
+  min-width: 200px;
+  max-width: 400px;
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: var(--spacing-sm);
+  color: var(--color-secondary);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  padding-left: calc(var(--spacing-md) + 20px);
+  /* border: 2px solid rgba(var(--color-secondary-rgb), 0.3); */
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 0.9em;
+  transition: all var(--transition-fast);
+}
+
+.search-input:hover {
+  border-color: var(--color-secondary);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.2);
+}
+
+.search-input:focus + .search-icon {
+  color: var(--color-primary);
+  opacity: 1;
 }
 
 .variant-toggle {
@@ -202,7 +285,7 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(var(--color-secondary-rgb), 0.3);
+  background-color: rgba(var(--color-secondary), 0.3);
   transition: all var(--transition-fast);
   border-radius: 9999px;
 }
@@ -221,7 +304,7 @@ export default {
 }
 
 .toggle-input:checked + .toggle-slider {
-  background-color: var(--color-primary);
+  background-color: var(--color-secondary);
 }
 
 .toggle-input:checked + .toggle-slider .toggle-handle {
@@ -284,7 +367,7 @@ export default {
 .cuisine-filter select {
   padding: var(--spacing-sm) var(--spacing-md);
   border: 2px solid rgba(var(--color-secondary-rgb), 0.3);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   background: var(--color-surface);
   color: var(--color-text);
   font-size: 0.9em;
@@ -299,11 +382,11 @@ export default {
   transition: all var(--transition-fast);
 }
 
-.meal-filter select:hover,
+/* .meal-filter select:hover,
 .cuisine-filter select:hover {
   border-color: var(--color-secondary);
   background-color: rgba(var(--color-secondary-rgb), 0.05);
-}
+} */
 
 .meal-filter select:focus,
 .cuisine-filter select:focus {
@@ -381,7 +464,7 @@ export default {
 
 .cuisine-tag {
   background: rgba(var(--color-secondary-rgb), 0.2);
-  color: var(--color-secondary);
+  color: var(--color-accent-alt);
   border: 1px solid rgba(var(--color-secondary-rgb), 0.2);
 }
 

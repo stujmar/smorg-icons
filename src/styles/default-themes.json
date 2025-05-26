@@ -2,7 +2,7 @@
   "breakfast": {
     "primary": "#F79A66",
     "primary-rgb": "247, 154, 102",
-    "secondary": "#F5D9A0",
+    "secondary": "#ffc552",
     "accent": "#E8D4BA",
     "accent-alt": "#7C4C36",
     "surface": "#FFF",
@@ -27,7 +27,7 @@
     "accent-alt": "#773658",
     "surface": "#FFF",
     "text": "#3A3837",
-    "background": "#FFF1F0"
+    "background": "#f7f2e3"
   },
   "midnight": {
     "primary": "#9686F2",
@@ -35,8 +35,8 @@
     "secondary": "#A2F2D0",
     "accent": "#F7E286",
     "accent-alt": "#657205",
-    "surface": "#FFF",
-    "text": "#3A3837",
-    "background": "#775DE2"
+    "surface": "#251c31",
+    "text": "#f2f2f2",
+    "background": "#3d3d43"
   }
-} 
+}
