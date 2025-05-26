@@ -1,7 +1,7 @@
 <script lang="ts">
 import IconGrid from './components/IconGrid.vue'
 import ThemeColors from './components/ThemeColors.vue'
-import { applyTheme } from './styles/theme'
+import { themeService } from './services/themeService'
 import './styles/global.css'
 
 export default {
@@ -14,6 +14,7 @@ export default {
     return {
       searchQuery: '',
       selectedMeal: 'breakfast',
+      currentTheme: 'breakfast',
       meals: ['breakfast', 'lunch', 'supper', 'midnight snack']
     }
   },
@@ -22,19 +23,28 @@ export default {
       // TODO: Implement icon filtering
       console.log('Filtering icons with query:', this.searchQuery)
     },
-    selectMeal(meal: string) {
+    selectMeal(meal) {
       this.selectedMeal = meal
       // Apply theme based on meal time
-      const themeMap: Record<string, string> = {
+      const themeMap = {
         'midnight snack': 'midnight'
       }
       const themeName = themeMap[meal] || meal
-      applyTheme(themeName)
+      this.currentTheme = themeName
+      themeService.applyTheme(themeName)
+    },
+    onThemeChanged(newTheme) {
+      this.currentTheme = newTheme
+      // Find corresponding meal for the theme
+      const mealMap = {
+        'midnight': 'midnight snack'
+      }
+      this.selectedMeal = mealMap[newTheme] || newTheme
     }
   },
   mounted() {
     // Apply default theme
-    applyTheme(this.selectedMeal)
+    themeService.applyTheme(this.selectedMeal)
   }
 }
 </script>
@@ -66,7 +76,10 @@ export default {
             {{ meal }}
           </button>
         </div>
-        <ThemeColors />
+        <ThemeColors 
+          :current-theme="currentTheme"
+          @theme-changed="onThemeChanged"
+        />
       </div>
     </nav>
     <main class="main-content">
@@ -124,27 +137,26 @@ html, body {
   border: 2px solid transparent;
   border-radius: var(--radius-sm);
   font-size: 1rem;
-  background-color: rgba(255, 255, 255, 0.15);
-  color: var(--color-surface);
+  background-color: rgba(var(--color-text-rgb), 0.1);
   transition: all var(--transition-fast);
   min-height: 44px;
   outline: none;
 }
 
 .search-bar input::placeholder {
-  color: rgba(255, 255, 255, 0.8);
-  opacity: 0.8;
+  color: var(--color-surface);
+  opacity: 0.6;
 }
 
 .search-bar input:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(var(--color-text-rgb), 0.15);
 }
 
 .search-bar input:focus {
-  background-color: rgba(255, 255, 255, 0.25);
-  border-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(var(--color-text-rgb), 0.2);
+  border-color: var(--color-splash);
   box-shadow: 
-    0 0 0 4px rgba(255, 255, 255, 0.2),
+    0 0 0 4px rgba(var(--color-splash-rgb), 0.2),
     0 2px 4px rgba(0, 0, 0, 0.1);
 }
 

@@ -3,11 +3,14 @@
     --color-primary: #f45c40;
     --color-primary-rgb: 244, 92, 64;
     --color-secondary: #f5d9a0;
+    --color-secondary-rgb: 245, 217, 160;
     --color-background: #f5d9a0;
     --color-surface: #ffffff;
     --color-text: #333333;
+    --color-text-rgb: 51, 51, 51;
     --color-accent: #f45c40;
     --color-splash: #00c4a7;
+    --color-splash-rgb: 0, 196, 167;
 
     /* Spacing */
     --spacing-xs: 0.25rem;
@@ -63,8 +66,12 @@ button:focus {
 .theme-breakfast {
     --color-primary: var(--breakfast-primary, #ff9a3c);
     --color-primary-rgb: 255, 154, 60;
+    --color-secondary: var(--breakfast-secondary, #F5D9A0);
+    --color-secondary-rgb: 245, 217, 160;
     --color-background: var(--breakfast-background, #fff7e6);
     --color-splash: var(--breakfast-splash, #e91e63);
+    --color-splash-rgb: 233, 30, 99;
+    --color-text-rgb: 51, 51, 51;
     --focus-ring-color: var(--color-splash);
     --focus-ring-alpha: 0.4;
 }
@@ -72,8 +79,12 @@ button:focus {
 .theme-lunch {
     --color-primary: var(--lunch-primary, #4caf50);
     --color-primary-rgb: 76, 175, 80;
+    --color-secondary: var(--lunch-secondary, #DFEA9D);
+    --color-secondary-rgb: 223, 234, 157;
     --color-background: var(--lunch-background, #f1f8e9);
     --color-splash: var(--lunch-splash, #ff6b6b);
+    --color-splash-rgb: 255, 107, 107;
+    --color-text-rgb: 51, 51, 51;
     --focus-ring-color: var(--color-splash);
     --focus-ring-alpha: 0.4;
 }
@@ -81,8 +92,12 @@ button:focus {
 .theme-supper {
     --color-primary: var(--supper-primary, #5c6bc0);
     --color-primary-rgb: 92, 107, 192;
+    --color-secondary: var(--supper-secondary, #ADD893);
+    --color-secondary-rgb: 173, 216, 147;
     --color-background: var(--supper-background, #f5f6ff);
     --color-splash: var(--supper-splash, #ffd93d);
+    --color-splash-rgb: 255, 217, 61;
+    --color-text-rgb: 51, 51, 51;
     --focus-ring-color: var(--color-splash);
     --focus-ring-alpha: 0.5;
 }
@@ -90,10 +105,14 @@ button:focus {
 .theme-midnight {
     --color-primary: var(--midnight-primary, #6366f1);
     --color-primary-rgb: 99, 102, 241;
+    --color-secondary: var(--midnight-secondary, #A2F2D0);
+    --color-secondary-rgb: 162, 242, 208;
     --color-background: var(--midnight-background, #0f172a);
     --color-surface: var(--midnight-surface, #1e293b);
     --color-text: var(--midnight-text, #f8fafc);
+    --color-text-rgb: 248, 250, 252;
     --color-splash: var(--midnight-splash, #4ade80);
+    --color-splash-rgb: 74, 222, 128;
     --focus-ring-color: var(--color-splash);
     --focus-ring-alpha: 0.3;
 }

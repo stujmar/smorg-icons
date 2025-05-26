@@ -1,0 +1,42 @@
+{
+  "breakfast": {
+    "primary": "#F79A66",
+    "primary-rgb": "247, 154, 102",
+    "secondary": "#F5D9A0",
+    "accent": "#E8D4BA",
+    "accent-alt": "#7C4C36",
+    "surface": "#FFF",
+    "text": "#3A3837",
+    "background": "#FFF3E0"
+  },
+  "lunch": {
+    "primary": "#FFC05A",
+    "primary-rgb": "255, 192, 90",
+    "secondary": "#DFEA9D",
+    "accent": "#E8D4BA",
+    "accent-alt": "#B25628",
+    "surface": "#FFF",
+    "text": "#3A3837",
+    "background": "#FFF9E6"
+  },
+  "supper": {
+    "primary": "#F87866",
+    "primary-rgb": "248, 120, 102",
+    "secondary": "#ADD893",
+    "accent": "#C9BBA7",
+    "accent-alt": "#773658",
+    "surface": "#FFF",
+    "text": "#3A3837",
+    "background": "#FFF1F0"
+  },
+  "midnight": {
+    "primary": "#9686F2",
+    "primary-rgb": "150, 134, 242",
+    "secondary": "#A2F2D0",
+    "accent": "#F7E286",
+    "accent-alt": "#657205",
+    "surface": "#FFF",
+    "text": "#3A3837",
+    "background": "#775DE2"
+  }
+} 

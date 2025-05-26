@@ -11,13 +11,53 @@
       </svg>
     </button>
     <div v-if="isOpen" class="color-panel">
+      <div class="theme-selector">
+        <label for="theme-select">Current Theme:</label>
+        <select 
+          id="theme-select" 
+          v-model="selectedTheme"
+          @change="onThemeChange"
+        >
+          <option v-for="theme in themeNames" :key="theme" :value="theme">
+            {{ formatName(theme) }}
+          </option>
+        </select>
+        <button 
+          class="reset-button" 
+          @click="resetCurrentTheme"
+          :title="'Reset ' + selectedTheme + ' theme to defaults'"
+        >
+          Reset to Default
+        </button>
+        <button 
+          class="save-button" 
+          @click="saveChanges"
+          :class="{ 'has-changes': hasUnsavedChanges }"
+          :disabled="!hasUnsavedChanges"
+          :title="hasUnsavedChanges ? 'Save theme changes to file' : 'No unsaved changes'"
+        >
+          Save Changes
+        </button>
+        <span v-if="saveError" class="save-error">
+          {{ saveError }}
+        </span>
+      </div>
       <div class="color-grid">
         <div v-for="(value, name) in themeColors" :key="name" class="color-item">
-          <div 
-            class="color-preview" 
-            :style="{ backgroundColor: value }"
-            :aria-label="'Color preview for ' + name"
-          ></div>
+          <div class="color-preview-wrapper">
+            <div 
+              class="color-preview" 
+              :style="{ backgroundColor: value }"
+              :aria-label="'Color preview for ' + name"
+            ></div>
+            <input 
+              type="color" 
+              :value="value"
+              @input="updateColor(name, $event.target.value)"
+              class="color-picker"
+              :aria-label="'Color picker for ' + name"
+            >
+          </div>
           <div class="color-info">
             <span class="color-name">{{ formatName(name) }}</span>
             <div class="color-value-wrapper">
@@ -40,54 +80,95 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
+import { themeService } from '../services/themeService'
+
 export default {
   name: 'ThemeColors',
+  props: {
+    currentTheme: {
+      type: String,
+      default: 'default'
+    }
+  },
   data() {
     return {
       isOpen: false,
-      themeColors: {} as Record<string, string>
+      themeColors: {},
+      selectedTheme: this.currentTheme,
+      themeNames: themeService.getThemeNames(),
+      hasUnsavedChanges: false,
+      saveError: ''
+    }
+  },
+  watch: {
+    currentTheme: {
+      handler(newTheme) {
+        this.selectedTheme = newTheme;
+        this.updateThemeColors();
+      },
+      immediate: true
     }
   },
   methods: {
-    updateThemeColors() {
-      const computedStyle = getComputedStyle(document.documentElement);
-      this.themeColors = {
-        primary: computedStyle.getPropertyValue('--color-primary').trim(),
-        splash: computedStyle.getPropertyValue('--color-splash').trim(),
-        background: computedStyle.getPropertyValue('--color-background').trim(),
-        surface: computedStyle.getPropertyValue('--color-surface').trim(),
-        text: computedStyle.getPropertyValue('--color-text').trim(),
-        accent: computedStyle.getPropertyValue('--color-accent').trim()
-      };
+    async updateThemeColors() {
+      this.saveError = ''
+      const theme = await themeService.getTheme(this.selectedTheme)
+      // Filter out the RGB values as they're derived
+      this.themeColors = Object.fromEntries(
+        Object.entries(theme).filter(([key]) => !key.endsWith('-rgb'))
+      )
+      await this.checkUnsavedChanges()
     },
-    formatName(name: string): string {
-      return name.charAt(0).toUpperCase() + name.slice(1);
+    formatName(name) {
+      return name.charAt(0).toUpperCase() + name.slice(1)
     },
-    async copyToClipboard(text: string) {
+    async copyToClipboard(text) {
       try {
-        await navigator.clipboard.writeText(text);
+        await navigator.clipboard.writeText(text)
         // You could add a toast notification here if desired
       } catch (err) {
-        console.error('Failed to copy text: ', err);
+        console.error('Failed to copy text: ', err)
       }
+    },
+    async updateColor(colorKey, value) {
+      this.saveError = ''
+      await themeService.saveColorOverride(this.selectedTheme, colorKey, value)
+      await this.updateThemeColors()
+      await themeService.applyTheme(this.selectedTheme)
+      this.$emit('theme-changed', this.selectedTheme)
+      await this.checkUnsavedChanges()
+    },
+    async onThemeChange() {
+      this.saveError = ''
+      await this.updateThemeColors()
+      await themeService.applyTheme(this.selectedTheme)
+      this.$emit('theme-changed', this.selectedTheme)
+      await this.checkUnsavedChanges()
+    },
+    async resetCurrentTheme() {
+      this.saveError = ''
+      await themeService.resetTheme(this.selectedTheme)
+      await this.updateThemeColors()
+      await themeService.applyTheme(this.selectedTheme)
+      this.$emit('theme-changed', this.selectedTheme)
+      await this.checkUnsavedChanges()
+    },
+    async saveChanges() {
+      this.saveError = ''
+      const success = await themeService.saveUserThemes(await themeService.loadUserThemes())
+      if (!success) {
+        this.saveError = 'Failed to save changes. Is the theme server running?'
+      }
+      await this.checkUnsavedChanges()
+    },
+    async checkUnsavedChanges() {
+      this.hasUnsavedChanges = await themeService.hasUnsavedChanges()
     }
   },
-  mounted() {
-    this.updateThemeColors();
-    // Update colors when theme changes
-    const observer = new MutationObserver(() => {
-      this.updateThemeColors();
-    });
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class']
-    });
-  },
-  beforeUnmount() {
-    // Cleanup observer
-    const observer = new MutationObserver(() => {});
-    observer.disconnect();
+  async mounted() {
+    await this.updateThemeColors()
+    await this.checkUnsavedChanges()
   }
 }
 </script>
@@ -137,6 +218,62 @@ export default {
   max-width: 400px;
 }
 
+.theme-selector {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid rgba(var(--color-primary-rgb), 0.1);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.theme-selector select {
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 0.9em;
+  cursor: pointer;
+}
+
+.reset-button {
+  padding: 8px 12px;
+  border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-primary);
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.reset-button:hover {
+  background: rgba(var(--color-primary-rgb), 0.1);
+}
+
+.save-button {
+  padding: 8px 12px;
+  border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+  border-radius: var(--radius-sm);
+  background: var(--color-primary);
+  color: var(--color-surface);
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.save-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(var(--color-primary-rgb), 0.2);
+}
+
+.save-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: rgba(var(--color-primary-rgb), 0.5);
+}
+
 .color-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -154,11 +291,27 @@ export default {
   border: 1px solid rgba(var(--color-primary-rgb), 0.1);
 }
 
-.color-preview {
+.color-preview-wrapper {
+  position: relative;
   width: 32px;
   height: 32px;
+}
+
+.color-preview {
+  width: 100%;
+  height: 100%;
   border-radius: var(--radius-sm);
   border: 2px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.color-picker {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
 }
 
 .color-info {
@@ -217,5 +370,11 @@ export default {
   .copy-button {
     transition: none;
   }
+}
+
+.save-error {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-left: 0.5rem;
 }
 </style> 

@@ -26,7 +26,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 export default {
   name: 'Icon',
   props: {
@@ -41,12 +41,12 @@ export default {
     mode: {
       type: String,
       default: 'solid',
-      validator: (value: string) => ['solid', 'outline'].includes(value)
+      validator: (value) => ['solid', 'outline'].includes(value)
     },
     colorTheme: {
       type: String,
       default: 'default',
-      validator: (value: string) => [
+      validator: (value) => [
         'default',
         'breakfast',
         'lunch',
@@ -65,7 +65,7 @@ export default {
     }
   },
   computed: {
-    iconPath(): string {
+    iconPath() {
       // In the future, this could handle different paths based on mode
       return this.path
     }
