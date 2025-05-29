@@ -2,7 +2,17 @@
     box-sizing: border-box;
 }
 
+/* Prevent scrollbar layout shift */
+html {
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
+}
+
 :root {
+    /* System */
+    --scrollbar-width: 17px;
+    /* Default scrollbar width for most browsers */
+
     /* Default theme colors */
     --color-primary: #f45c40;
     --color-primary-rgb: 244, 92, 64;

@@ -2,12 +2,12 @@
   "breakfast": {
     "primary": "#F79A66",
     "primary-rgb": "247, 154, 102",
-    "secondary": "#ffc552",
+    "secondary": "#ffc247",
     "accent": "#E8D4BA",
     "accent-alt": "#7C4C36",
-    "surface": "#FFF",
-    "text": "#3A3837",
-    "background": "#FFF3E0"
+    "surface": "#f7f2e7",
+    "text": "#3a3837",
+    "background": "#F5D9A0"
   },
   "lunch": {
     "primary": "#FFC05A",
@@ -15,9 +15,9 @@
     "secondary": "#DFEA9D",
     "accent": "#E8D4BA",
     "accent-alt": "#B25628",
-    "surface": "#FFF",
-    "text": "#3A3837",
-    "background": "#FFF9E6"
+    "surface": "#fef8ec",
+    "text": "#3a3837",
+    "background": "#DFEA9D"
   },
   "supper": {
     "primary": "#F87866",
@@ -25,8 +25,8 @@
     "secondary": "#ADD893",
     "accent": "#C9BBA7",
     "accent-alt": "#773658",
-    "surface": "#FFF",
-    "text": "#3A3837",
+    "surface": "#f0e0bc",
+    "text": "#3a3837",
     "background": "#f7f2e3"
   },
   "midnight": {

@@ -1,8 +1,9 @@
 {
-  "lunch": {
-    "secondary": "#c3d945"
+  "breakfast": {
+    "secondary": "#ffc247"
   },
-  "supper": {
-    "text": "#ff5500"
+  "midnight": {
+    "primary": "#cdf287",
+    "primary-rgb": "205, 242, 135"
   }
 }

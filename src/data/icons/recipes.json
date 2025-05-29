@@ -1,0 +1,244 @@
+{
+  "pizza": {
+    "name": "Pizza",
+    "meal": "lunch",
+    "cuisines": [
+      "italian",
+      "fast-food"
+    ],
+    "solid": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 2c3.87 0 7.17 2.47 8.43 5.91-1.25 3.45-4.56 5.91-8.43 5.91s-7.17-2.47-8.43-5.91C4.83 6.47 8.13 4 12 4zm2 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-4 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 3a1 1 0 1 0 0 2 1 1 0 0 0 0-2z'/></svg>",
+    "outline": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><circle cx='12' cy='12' r='9'/><circle cx='14' cy='9' r='2'/><circle cx='10' cy='9' r='1'/><circle cx='8' cy='12' r='1'/></svg>"
+  },
+  "coffee": {
+    "name": "Coffee Cup",
+    "meal": "breakfast",
+    "cuisines": [
+      "beverage"
+    ],
+    "solid": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M2 21v-2h18v2H2zM20 8V5h-2v3h2zm0 1h-2c-1.1 0-2-.9-2-2V5H6v7c0 2.21 1.79 4 4 4h4c2.21 0 4-1.79 4-4v-2h2c1.1 0 2-.9 2-2V9z'/></svg>",
+    "outline": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M4 19h16M18 8V5h2v3h-2zm0 0h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2M18 8H6v7a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4V8z'/></svg>"
+  },
+  "burger": {
+    "name": "Hamburger",
+    "meal": "lunch",
+    "cuisines": [
+      "american",
+      "fast-food"
+    ],
+    "solid": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M2 16h20v2H2v-2zm1-9h18a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1zm17 7H4a2 2 0 0 1-2-2h20a2 2 0 0 1-2 2zM3 7V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v1H3z'/></svg>",
+    "outline": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M3 16h18M3 11h18M3 6h18M6 19l1-3M12 19l1-3M18 19l1-3'/></svg>"
+  },
+  "bowl": {
+    "name": "Noodle Bowl",
+    "meal": "lunch",
+    "cuisines": [
+      "asian"
+    ],
+    "solid": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M22 12c0 5.52-4.48 10-10 10S2 17.52 2 12h20zM12 2C6.48 2 2 6.48 2 12h20c0-5.52-4.48-10-10-10zm-5 6c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm6 0c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2z'/></svg>",
+    "outline": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9m18 0c0-4.97-4.03-9-9-9s-9 4.03-9 9m18 0H3m6-4c0-1.1.9-2 2-2s2 .9 2 2m4 0c0-1.1.9-2 2-2s2 .9 2 2'/></svg>"
+  },
+  "eggs": {
+    "name": "Sunny Eggs",
+    "meal": "breakfast",
+    "cuisines": [
+      "american",
+      "classic"
+    ],
+    "solid": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M12 4c-4.4 0-8 5.5-8 10 0 4.4 3.6 8 8 8s8-3.6 8-8c0-4.5-3.6-10-8-10zm0 14c-2.2 0-4-1.8-4-4 0-1.1.9-2 2-2s2 .9 2 2c0 1.1-.4 2-1 2.7.3.2.6.3 1 .3 2.2 0 4-1.8 4-4 0-2.9-2.2-6-4-6s-4 3.1-4 6c0 2.2 1.8 4 4 4z'/></svg>",
+    "outline": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><circle cx='12' cy='14' r='6'/><circle cx='12' cy='14' r='2'/></svg>"
+  },
+  "pancakes": {
+    "name": "Stack of Pancakes",
+    "meal": "breakfast",
+    "cuisines": [
+      "american",
+      "sweet"
+    ],
+    "solid": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M12 2C6.48 2 2 3.12 2 4.5v3C2 8.88 6.48 10 12 10s10-1.12 10-2.5v-3C22 3.12 17.52 2 12 2zM2 10.5V14c0 1.38 4.48 2.5 10 2.5s10-1.12 10-2.5v-3.5C19.24 12.1 15.76 13 12 13s-7.24-.9-10-2.5zm0 6V20c0 1.38 4.48 2.5 10 2.5s10-1.12 10-2.5v-3.5C19.24 18.1 15.76 19 12 19s-7.24-.9-10-2.5z'/></svg>",
+    "outline": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M4 6c0 1.1 3.6 2 8 2s8-.9 8-2M4 12c0 1.1 3.6 2 8 2s8-.9 8-2M4 18c0 1.1 3.6 2 8 2s8-.9 8-2'/></svg>"
+  },
+  "bacon": {
+    "name": "Crispy Bacon",
+    "meal": "breakfast",
+    "cuisines": [
+      "american",
+      "classic"
+    ],
+    "solid": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M3 5c0-.6.4-1 1-1h16c.6 0 1 .4 1 1v2c0 .6-.4 1-1 1H4c-.6 0-1-.4-1-1V5zm2 6c0-.6.4-1 1-1h12c.6 0 1 .4 1 1v2c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-2zm-1 6c0-.6.4-1 1-1h14c.6 0 1 .4 1 1v2c0 .6-.4 1-1 1H5c-.6 0-1-.4-1-1v-2z'/></svg>",
+    "outline": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M4 6h16M6 12h12M5 18h14' stroke-linecap='round' stroke-linejoin='round'/></svg>"
+  },
+  "toast": {
+    "name": "Toast",
+    "meal": "breakfast",
+    "cuisines": [
+      "classic"
+    ],
+    "solid": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M21 6v12c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2h14c1.1 0 2 .9 2 2zm-2 0H5v12h14V6zm-3 4c.6 0 1 .4 1 1s-.4 1-1 1-1-.4-1-1 .4-1 1-1z'/></svg>",
+    "outline": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><rect x='4' y='4' width='16' height='16' rx='2'/><circle cx='16' cy='11' r='1'/></svg>"
+  },
+  "smoothie": {
+    "name": "Breakfast Smoothie",
+    "meal": "breakfast",
+    "cuisines": [
+      "beverage",
+      "healthy"
+    ],
+    "solid": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M18 3H6l3 18h6l3-18zm-1.5 4h-9L8 18h8l.5-11z'/></svg>",
+    "outline": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M6 3h12l-3 18H9L6 3z'/><path d='M7.5 7h9'/></svg>"
+  },
+  "sandwich": {
+    "name": "Club Sandwich",
+    "meal": "lunch",
+    "cuisines": [
+      "american",
+      "classic"
+    ],
+    "solid": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M4 5c0-.6.4-1 1-1h14c.6 0 1 .4 1 1s-.4 1-1 1H5c-.6 0-1-.4-1-1zm0 7c0-.6.4-1 1-1h14c.6 0 1 .4 1 1s-.4 1-1 1H5c-.6 0-1-.4-1-1zm0 7c0-.6.4-1 1-1h14c.6 0 1 .4 1 1s-.4 1-1 1H5c-.6 0-1-.4-1-1z'/></svg>",
+    "outline": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M4 5h16M4 12h16M4 19h16'/></svg>"
+  },
+  "salad": {
+    "name": "Fresh Salad",
+    "meal": "lunch",
+    "cuisines": [
+      "healthy",
+      "fresh"
+    ],
+    "solid": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M20 10c-1.1 0-2 .9-2 2H6c0-1.1-.9-2-2-2-1.1 0-2 .9-2 2v2c0 4.4 3.6 8 8 8s8-3.6 8-8v-2c0-1.1-.9-2-2-2zm-8-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z'/></svg>",
+    "outline": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M4 12c0 4.4 3.6 8 8 8s8-3.6 8-8'/><circle cx='12' cy='6' r='2'/></svg>"
+  },
+  "soup": {
+    "name": "Hot Soup",
+    "meal": "lunch",
+    "cuisines": [
+      "comfort",
+      "classic"
+    ],
+    "solid": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M20 10c0-4.4-3.6-8-8-8s-8 3.6-8 8h16zm2 2H2c0 5.5 4.5 10 10 10s10-4.5 10-10z'/></svg>",
+    "outline": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M4 10h16c0-4.4-3.6-8-8-8s-8 3.6-8 8zm-2 2c0 5.5 4.5 10 10 10s10-4.5 10-10'/></svg>"
+  },
+  "wrap": {
+    "name": "Lunch Wrap",
+    "meal": "lunch",
+    "cuisines": [
+      "healthy",
+      "fresh"
+    ],
+    "solid": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M19 6H5c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 10H5V8h14v8z'/></svg>",
+    "outline": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><rect x='3' y='6' width='18' height='12' rx='2'/></svg>"
+  },
+  "sushi": {
+    "name": "Sushi Roll",
+    "meal": "lunch",
+    "cuisines": [
+      "asian",
+      "japanese"
+    ],
+    "solid": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M20 10c0-2.2-3.6-4-8-4s-8 1.8-8 4v4c0 2.2 3.6 4 8 4s8-1.8 8-4v-4zM4 14v-4c0 1.1 3.6 2 8 2s8-.9 8-2v4c0 1.1-3.6 2-8 2s-8-.9-8-2z'/></svg>",
+    "outline": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M4 10c0 1.1 3.6 2 8 2s8-.9 8-2M4 14c0 1.1 3.6 2 8 2s8-.9 8-2M4 10v4c0 1.1 3.6 2 8 2s8-.9 8-2v-4'/></svg>"
+  },
+  "steak": {
+    "name": "Grilled Steak",
+    "meal": "supper",
+    "cuisines": [
+      "american",
+      "grill"
+    ],
+    "solid": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M19 6H5c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7 10c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4z'/></svg>",
+    "outline": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><rect x='3' y='6' width='18' height='12' rx='2'/><circle cx='12' cy='12' r='4'/></svg>"
+  },
+  "pasta": {
+    "name": "Spaghetti",
+    "meal": "supper",
+    "cuisines": [
+      "italian",
+      "classic"
+    ],
+    "solid": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M20 4v2c0 1.1-3.6 2-8 2S4 7.1 4 6V4c0-1.1 3.6-2 8-2s8 .9 8 2zm0 6v2c0 1.1-3.6 2-8 2s-8-.9-8-2v-2c1.7.8 4.6 1.3 8 1.3s6.3-.5 8-1.3zm0 6v2c0 1.1-3.6 2-8 2s-8-.9-8-2v-2c1.7.8 4.6 1.3 8 1.3s6.3-.5 8-1.3z'/></svg>",
+    "outline": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M4 4c0 1.1 3.6 2 8 2s8-.9 8-2M4 10c0 1.1 3.6 2 8 2s8-.9 8-2M4 16c0 1.1 3.6 2 8 2s8-.9 8-2'/></svg>"
+  },
+  "fish": {
+    "name": "Grilled Fish",
+    "meal": "supper",
+    "cuisines": [
+      "seafood",
+      "healthy",
+      "grill"
+    ],
+    "solid": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v2h-2V7zm0 4h2v6h-2v-6z'/></svg>",
+    "outline": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><circle cx='12' cy='12' r='9'/><path d='M11 7h2v2h-2zM11 11h2v6h-2z'/></svg>"
+  },
+  "roast": {
+    "name": "Sunday Roast",
+    "meal": "supper",
+    "cuisines": [
+      "british",
+      "classic",
+      "comfort"
+    ],
+    "solid": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M19 6H5c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-2 10H7V8h10v8z'/></svg>",
+    "outline": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><rect x='3' y='6' width='18' height='12' rx='2'/><rect x='7' y='8' width='10' height='8'/></svg>"
+  },
+  "curry": {
+    "name": "Spicy Curry",
+    "meal": "supper",
+    "cuisines": [
+      "indian",
+      "spicy"
+    ],
+    "solid": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M20 10c-1.1 0-2 .9-2 2H6c0-1.1-.9-2-2-2s-2 .9-2 2v2c0 4.4 3.6 8 8 8s8-3.6 8-8v-2c0-1.1-.9-2-2-2z'/></svg>",
+    "outline": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M4 12v2c0 4.4 3.6 8 8 8s8-3.6 8-8v-2'/><path d='M4 12c0-1.1.9-2 2-2s2 .9 2 2M18 12c0-1.1.9-2 2-2s2 .9 2 2'/></svg>"
+  },
+  "icecream": {
+    "name": "Midnight Ice Cream",
+    "meal": "midnight",
+    "cuisines": [
+      "dessert",
+      "sweet",
+      "comfort"
+    ],
+    "solid": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M12 2C8.69 2 6 4.69 6 8v2c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V8c0-3.31-2.69-6-6-6zm0 18c-.55 0-1-.45-1-1v-7h2v7c0 .55-.45 1-1 1z'/></svg>",
+    "outline": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M6 8c0-3.31 2.69-6 6-6s6 2.69 6 6v2c0 1.1-.9 2-2 2H8c-1.1 0-2-.9-2-2V8z'/><path d='M11 12v7c0 .55.45 1 1 1s1-.45 1-1v-7'/></svg>"
+  },
+  "cookies": {
+    "name": "Secret Cookies",
+    "meal": "midnight",
+    "cuisines": [
+      "dessert",
+      "sweet",
+      "comfort"
+    ],
+    "solid": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 5c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm-4 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm6 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1z'/></svg>",
+    "outline": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><circle cx='12' cy='12' r='9'/><circle cx='13' cy='8' r='1'/><circle cx='9' cy='12' r='1'/><circle cx='15' cy='16' r='1'/></svg>"
+  },
+  "leftovers": {
+    "name": "Mystery Leftovers",
+    "meal": "midnight",
+    "cuisines": [
+      "comfort",
+      "mystery"
+    ],
+    "solid": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zm-8-2h2v-2h-2v2zm0-4h2V8h-2v4z'/></svg>",
+    "outline": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><rect x='2' y='4' width='20' height='16' rx='2'/><path d='M12 12v4h2v-4h-2zm0-4v2h2V8h-2z'/></svg>"
+  },
+  "cheese": {
+    "name": "3am Cheese",
+    "meal": "midnight",
+    "cuisines": [
+      "comfort",
+      "dairy"
+    ],
+    "solid": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M20 5v2L4 12v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6l4-5V5h-4zM9 16c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm6 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z'/></svg>",
+    "outline": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M20 5v2L4 12v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6l4-5V5h-4z'/><circle cx='9' cy='15' r='1'/><circle cx='15' cy='15' r='1'/></svg>"
+  },
+  "ramen": {
+    "name": "Instant Ramen",
+    "meal": "midnight",
+    "cuisines": [
+      "asian",
+      "japanese",
+      "comfort"
+    ],
+    "solid": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M20 10c0-4.4-3.6-8-8-8s-8 3.6-8 8h16zm2 2H2c0 5.5 4.5 10 10 10s10-4.5 10-10zm-6-2c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1z'/></svg>",
+    "outline": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M4 10h16c0-4.4-3.6-8-8-8s-8 3.6-8 8zm-2 2c0 5.5 4.5 10 10 10s10-4.5 10-10'/><circle cx='16' cy='9' r='1'/></svg>"
+  }
+}

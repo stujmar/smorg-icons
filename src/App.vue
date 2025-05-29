@@ -1,6 +1,46 @@
-<script lang="ts">
+<template>
+  <div class="app">
+    <header class="header">
+      <div class="header-content">
+        <SmorgasbordLogo />
+      </div>
+    </header>
+
+    <div class="scrollable-content">
+      <div class="nav-wrapper">
+        <nav class="meal-nav">
+          <div class="nav-content">
+            <div class="meal-buttons">
+              <button 
+                v-for="meal in meals" 
+                :key="meal"
+                :class="['meal-button', { active: selectedMeal === meal }]"
+                @click="selectMeal(meal)"
+              >
+                {{ meal }}
+              </button>
+            </div>
+            <ThemeColors 
+              :current-theme="currentTheme"
+              @theme-changed="onThemeChanged"
+            />
+          </div>
+        </nav>
+      </div>
+
+      <main class="main-content">
+        <div class="content-wrapper">
+          <IconGrid />
+        </div>
+      </main>
+    </div>
+  </div>
+</template>
+
+<script>
 import IconGrid from './components/IconGrid.vue'
 import ThemeColors from './components/ThemeColors.vue'
+import SmorgasbordLogo from './components/SmorgasbordLogo.vue'
 import { themeService } from './services/themeService'
 import './styles/global.css'
 
@@ -8,7 +48,8 @@ export default {
   name: 'App',
   components: {
     IconGrid,
-    ThemeColors
+    ThemeColors,
+    SmorgasbordLogo
   },
   data() {
     return {
@@ -18,7 +59,7 @@ export default {
     }
   },
   methods: {
-    selectMeal(meal: string) {
+    selectMeal(meal) {
       this.selectedMeal = meal
       // Apply theme based on meal time
       const themeMap = {
@@ -28,7 +69,7 @@ export default {
       this.currentTheme = themeName
       themeService.applyTheme(themeName)
     },
-    onThemeChanged(newTheme: string) {
+    onThemeChanged(newTheme) {
       this.currentTheme = newTheme
       // Find corresponding meal for the theme
       const mealMap = {
@@ -44,79 +85,56 @@ export default {
 }
 </script>
 
-<template>
-  <div class="app">
-    <nav class="meal-nav">
-      <div class="nav-content">
-        <div class="theme-navigation">
-          <div class="meal-buttons">
-            <button 
-              v-for="meal in meals" 
-              :key="meal"
-              :class="['meal-button', { active: selectedMeal === meal }]"
-              @click="selectMeal(meal)"
-            >
-              {{ meal }}
-            </button>
-          </div>
-        </div>
-        <ThemeColors 
-          :current-theme="currentTheme"
-          @theme-changed="onThemeChanged"
-        />
-      </div>
-    </nav>
-    <main class="main-content">
-      <div class="content-wrapper">
-        <IconGrid />
-      </div>
-    </main>
-  </div>
-</template>
-
 <style>
 html, body {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  width: 100vw;
-  overflow-x: hidden;
 }
 
 .app {
+  width: 100vw !important;
   min-height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
+  background-color: var(--color-background);
+}
+
+.header {
+  background-color: var(--color-background);
+  padding: var(--spacing-md) 0;
 }
 
 .header-content {
-  width: 100%;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 12px;
-  z-index: 9999;
+  padding: 0 var(--spacing-md);
+}
+
+.scrollable-content {
+  min-height: calc(100vh - 70px);
+}
+
+.nav-wrapper {
+  background-color: var(--color-surface);
+  position: sticky;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 1px 2px rgba(38, 5, 5, 0.25);
 }
 
 .meal-nav {
-  padding: var(--spacing-md) 0;
-  display: flex;
-  position: fixed;
-  justify-content: center;
-  background-color: var(--color-surface);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  width: 100%;
-  z-index: 100;
+  height: 75px;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
 .nav-content {
-  width: 100%;
-  max-width: 1280px;
+  /* max-width: 1280px; */
   margin: 0 auto;
-  padding: 12px;
+  padding: var(--spacing-md);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--spacing-md);
 }
 
 .meal-buttons {
@@ -182,8 +200,6 @@ html, body {
 }
 
 .main-content {
-  flex: 1;
-  width: 100%;
   background-color: var(--color-background);
 }
 

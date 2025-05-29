@@ -14,7 +14,7 @@
             <path 
               d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" 
               stroke="currentColor" 
-              stroke-width="2" 
+              stroke-width="4" 
               stroke-linecap="round" 
               stroke-linejoin="round"
             />
@@ -29,19 +29,11 @@
         </div>
       </div>
       <div class="variant-toggle">
-        <label class="toggle">
-          <span class="toggle-label">{{ showSolid ? 'Solid' : 'Outline' }}</span>
-          <div class="toggle-switch">
-            <input 
-              type="checkbox" 
-              v-model="showSolid"
-              class="toggle-input"
-            >
-            <div class="toggle-slider">
-              <div class="toggle-handle"></div>
-            </div>
-          </div>
-        </label>
+        <Toggle 
+          v-model="showSolid"
+          on-label="Solid"
+          off-label="Outline"
+        />
       </div>
       <div class="size-control">
         <label>
@@ -49,8 +41,8 @@
           <input 
             type="range" 
             v-model="iconSize" 
-            min="24" 
-            max="96" 
+            min="32" 
+            max="80" 
             step="8"
             class="size-slider"
           >
@@ -108,21 +100,28 @@
 </template>
 
 <script>
-import icons from '../data/icons.json'
+import { loadAllIcons } from '../services/iconService'
+import Toggle from './ui/Toggle.vue'
 
 export default {
   name: 'IconGrid',
+  components: {
+    Toggle
+  },
   data() {
     return {
-      icons,
-      showSolid: true,
+      icons: {},
+      showSolid: false,
       selectedMeal: '',
       selectedCuisine: '',
       iconSize: 48,
       copyFeedback: null,
-      mealOrder: ['breakfast', 'lunch', 'supper', 'midnight'],
+      mealOrder: ['breakfast', 'lunch', 'supper', 'midnight', 'appliance'],
       searchQuery: ''
     }
+  },
+  async created() {
+    this.icons = await loadAllIcons()
   },
   computed: {
     uniqueMeals() {
@@ -179,9 +178,12 @@ export default {
 
 <style>
 .icon-grid {
-  padding-top: 140px;
   background-color: var(--color-background);
   max-width: 1280px;
+  padding: var(--spacing-md);
+  margin-top: 15px;
+  position: relative;
+  z-index: 1;
 }
 
 .controls {
@@ -194,8 +196,6 @@ export default {
   background: var(--color-surface);
   border-radius: var(--radius-md);
   border: 1px solid rgba(var(--color-secondary-rgb), 0.2);
-  /* border: 4px solid var(--color-secondary); */
-  /* box-shadow: 0 4px 16px rgba(var(--color-secondary-rgb), 0.15); */
   position: relative;
   z-index: 1;
 }
@@ -216,7 +216,6 @@ export default {
   position: absolute;
   left: var(--spacing-sm);
   color: var(--color-secondary);
-  opacity: 0.7;
   pointer-events: none;
 }
 
@@ -240,7 +239,7 @@ export default {
 .search-input:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.2);
+  box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.5);
 }
 
 .search-input:focus + .search-icon {
@@ -251,68 +250,6 @@ export default {
 .variant-toggle {
   display: flex;
   align-items: center;
-}
-
-.toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-  cursor: pointer;
-}
-
-.toggle-label {
-  font-size: 0.9em;
-  min-width: 48px;
-}
-
-.toggle-switch {
-  position: relative;
-  width: 44px;
-  height: 24px;
-}
-
-.toggle-input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-  position: absolute;
-}
-
-.toggle-slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(var(--color-secondary), 0.3);
-  transition: all var(--transition-fast);
-  border-radius: 9999px;
-}
-
-.toggle-handle {
-  position: absolute;
-  content: "";
-  height: 20px;
-  width: 20px;
-  left: 2px;
-  bottom: 2px;
-  background-color: var(--color-surface);
-  transition: all var(--transition-fast);
-  border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.toggle-input:checked + .toggle-slider {
-  background-color: var(--color-secondary);
-}
-
-.toggle-input:checked + .toggle-slider .toggle-handle {
-  transform: translateX(20px);
-}
-
-.toggle-input:focus-visible + .toggle-slider {
-  box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.2);
 }
 
 .size-control {
@@ -331,7 +268,7 @@ export default {
   width: 120px;
   height: 6px;
   -webkit-appearance: none;
-  background: rgba(var(--color-secondary-rgb), 0.3);
+  background: rgba(var(--color-secondary-rgb), 0.8);
   border-radius: var(--radius-pill);
   outline: none;
 }
@@ -366,7 +303,7 @@ export default {
 .meal-filter select,
 .cuisine-filter select {
   padding: var(--spacing-sm) var(--spacing-md);
-  border: 2px solid rgba(var(--color-secondary-rgb), 0.3);
+  border: 2px solid rgba(var(--color-secondary-rgb), 0.8);
   border-radius: var(--radius-md);
   background: var(--color-surface);
   color: var(--color-text);
@@ -392,7 +329,7 @@ export default {
 .cuisine-filter select:focus {
   outline: none;
   border-color: var(--color-secondary);
-  box-shadow: 0 0 0 2px rgba(var(--color-secondary-rgb), 0.2);
+  box-shadow: 0 0 0 2px rgba(var(--color-secondary-rgb), 0.8);
 }
 
 .grid {
